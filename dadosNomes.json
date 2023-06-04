@@ -1,0 +1,23 @@
+{
+    "People": [
+        {
+            "nome": "José Lucas",
+            "idade": 31,
+            "cidade": "Palhoça",
+            "hobbies": [
+                "ler",
+                "tocar violão",
+                "jogar video game"
+            ]
+        },
+        {
+            "nome": "Franciele",
+            "idade": 24,
+            "cidade": "Palhoça",
+            "hobbies": [
+                "andar de bike",
+                "jogar plants vs zombies"
+            ]
+        }
+    ]
+}
