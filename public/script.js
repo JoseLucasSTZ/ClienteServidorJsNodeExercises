@@ -4,29 +4,26 @@ const corpo = document.getElementById('corpo');
 const dadosServidor = 'http://localhost:3000/dados';
 
 
-function criarDiv(elemento) {
-    if (typeof elemento !== 'string') {
-        throw new Error('O argumento deve ser uma div!')
-    } else {
-        let novoElemento = document.createElement(`${elemento}`);
-        return novoElemento
-    }
-
-}
 
 requisitarDados.addEventListener('click', () => {
-    let novoElementoDiv = criarDiv('div')
-    novoElementoDiv.innerText = 'Dados requisitados, aguarde um pouco!';
-    corpo.appendChild(novoElementoDiv);
-});
+    fetch(dadosServidor)
+        .then(
+            response => response.json())
+        .then(
+            data => {
+                const pessoas = data.People;
+                pessoas.forEach(pessoa => {
+                    let novoElementoDiv = document.createElement('div');
+                    let hobbies = pessoa.hobbies;
+                    novoElementoDiv.innerText = `Nome: ${pessoa.nome}, Idade: ${pessoa.idade}, Cidade: ${pessoa.cidade}, Hobbies: ${hobbies}`
+                    corpo.appendChild(novoElementoDiv);
+                });
+            }
+        )
+        .then(
 
-requisitarDados.addEventListener('click', () => {
-    fetch(dadosServidor).then(response.json()).then(
-        data => {
-            let dadosResposta = JSON.stringify(data);
-            alert(dadosResposta)
-        }
-    ).catch(erros => {
-        alert('deu ruim')
-    })
+    )
+        .catch(erros => {
+            alert('deu ruim')
+        })
 });
